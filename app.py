@@ -13,7 +13,7 @@ migrate=Migrate(app,db)
 
 
 
-
+from views import index
 from mod_users import users
 from mod_Admin import admin
 app.register_blueprint(users)

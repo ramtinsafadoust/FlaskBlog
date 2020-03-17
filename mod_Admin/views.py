@@ -1,5 +1,8 @@
 from . import admin
-from flask import session
+from flask import session,render_template,request
+from mod_users.forms import LoginForm   
+
+
 
 
 
@@ -11,7 +14,10 @@ def index():
 
 
 
-@admin.route('/login/')
+@admin.route('/login/',methods=['GET','POST'])
 def login():
-    print(session)
-    return "1"
+    
+    form=LoginForm(request.form)
+    if request.method=="POST":
+        print (f"Form Is Validated? {form.validate_on_submit()}")
+    return render_template('admin/login.html',form=form)
